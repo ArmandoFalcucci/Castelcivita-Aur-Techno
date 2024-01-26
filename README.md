@@ -22,7 +22,7 @@ The Aurignacian is the first European technocomplex assigned to Homo sapiens ide
 
 ### Keywords:
 
-Early Upper Paleolithic; Aurignacian; lithic technology; geometric morphometrics; 3D model analysis; cultural evolution; human-environment interaction; open science
+Early Upper Paleolithic; Italy; Aurignacian; lithic technology; geometric morphometrics; 3D model analysis; cultural evolution; human-environment interaction; open science
 
 ### Overview of contents and how to reproduce:
 
