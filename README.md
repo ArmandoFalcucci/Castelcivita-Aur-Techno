@@ -3,13 +3,13 @@
 
 ### Compendium DOI:
 
-[![DOI](https://zenodo.org/badge/DOI/ADDDOI.svg)](https://doi.org/ADD LINK)
+[![DOI](https://zenodo.org/badge/DOI/ADDDOI.svg)](https://doi.org/ADDLINK)
 
 The files at the URL above will generate the results as found in the publication. The files hosted at <https://github.com/ArmandoFalcucci/Castelcivita-Aur-Techno> are the development versions and may have changed since the paper was published.
 
 ### Maintainer of this repository:
 
-[![ORCiD](https://img.shields.io/badge/ORCiD-0000-0002-3255-1005-green.svg)](http://orcid.org/0000-0002-3255-1005) Armando Falcucci (<armando.falcucci@uni-tuebingen.de>) 
+[![ORCiD](https://img.shields.io/badge/ORCiD-0000-0002-3255-1005-green.svg)] Armando Falcucci (<armando.falcucci@uni-tuebingen.de>) 
 
 ### Published in:
 
