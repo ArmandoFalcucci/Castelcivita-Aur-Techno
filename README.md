@@ -9,7 +9,7 @@ The files at the URL above will generate the results as found in the publication
 
 ### Maintainer of this repository:
 
-[![ORCiD](https://img.shields.io/badge/ORCiD-0000-0002-3255-1005-green.svg)] Armando Falcucci (<armando.falcucci@uni-tuebingen.de>) 
+[![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3255--1005-green.svg)] (https://orcid.org/0000-0002-3255-1005) Armando Falcucci (<armando.falcucci@uni-tuebingen.de>) 
 
 ### Published in:
 
