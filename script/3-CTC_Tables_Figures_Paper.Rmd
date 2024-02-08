@@ -1,0 +1,236 @@
+---
+title: "Tables and figures for the paper 'A pre-Campanian Ignimbrite techno-cultural shift in the Aurignacian sequence of Grotta di Castelcivita, southern Italy'"
+author: 
+- Armando Falcucci, Simona Arrighi, Vincenzo Spagnolo, Matteo Rossini, Owen Alexander Higgins, Brunella Muttillo, Ivan Martini, Jacopo Crezzini, Francesco Boschin, Annamaria
+  Ronchitelli, Adriana Moroni
+- armando.falcucci@uni-tuebingen.de (corresponding author)
+date: ''
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../output"
+    )
+  })
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+    Foreword: Only figures built with R are reported in this file. The other figures are accessible in the output folder `figures`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r include=FALSE}
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(tidyr)
+library(janitor)
+library(forcats)
+library(rstatix)
+library(tidyverse)
+library(MetBrewer)
+library(plyr)
+library(forcats)
+library(scales)
+library(cowplot)
+library(ggpubr)
+
+Dataset <- read.csv("../data/CTC_Dataset_complete.csv")
+Dataset_cores <- read.csv("../data/CTC_Dataset_cores.csv")
+
+comparison <- list(c("ars", "gic"), c("ars", "rsa'"), c("gic", "rsa'"))
+```
+
+## Tables
+
+### Table 1
+
+```{r, echo=FALSE, warning=FALSE}
+tabyl(Dataset, Layer, Class) %>%
+  adorn_totals("col") %>%
+  adorn_totals("row") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lccccr") %>%
+  kable_classic(full_width = F)
+```
+  **Table 1.** Quantification of the studied assemblages, categorized according to the lithic classes and their layer of provenience. The noticeable variations in the frequency of lithic categories are attributed to differences in the excavated area for each layer, technological and typological variability across the sequence, as well as the greater number of bipolar cores in *rsa’* (refer to Supplementary Information). The category “core-tool” includes artifacts involved in the production of bladelets (e.g., carinated endscrapers and burin cores) that can also be classified as tools following a typological approach (Demars & Laurent, 1992). We have kept these artifacts separate from the core list to facilitate inter-site comparisons. Rounded percentages are provided in brackets.
+
+### Table 2
+
+```{r, echo=FALSE, warning=FALSE}
+Dataset_cores %>%
+  filter(Laminar_y_n == "TRUE") %>%
+  mutate(Core_classification_2 = recode(Core_classification_2, `Burin core` = "Burin")) %>%
+  dplyr::rename(Classification = "Core_classification_2") %>%
+  mutate(Classification = fct_relevel(Classification, "Initial", "Burin", "Carinated", "Narrow-sided", "Semi-circumferential", "Wide-faced flat", "Multi-platform", "Shatter")) %>%   arrange(Classification) %>% 
+  tabyl(Layer, Classification) %>%
+  adorn_totals("row") %>%
+  adorn_totals("col") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 0) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lccccccccr") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+  **Table 2.** Core types associated with the production of blades and bladelets. The classification is based on Falcucci & Peresani (2018), who considers the location and orientation of the flaking surface in relation to the striking platform/s. The table does not include tested cores (n = 2) as the production objective could be assessed. The category carinated burins is summed in the carinated category. Rounded percentages are given in brackets.
+
+### Table 3
+
+```{r, echo=FALSE, warning=FALSE}
+Dataset_cores %>%
+  filter(Core_type != "Tested", Core_classification_2 != "Initial", Laminar_y_n == "TRUE") %>%
+  dplyr::rename(`Production` = Blank_production) %>%
+  tabyl(Layer, Production) %>%
+  adorn_totals("row") %>%
+  adorn_totals("col") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 0) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcccr") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+  **Table 3.** Classification of blade and bladelet cores according to the objective of production identified at discard. Initial core are not included in this list as scars on initial cores are often related to core shaping operations (Falcucci et al., 2017). Rounded percentages are given in brackets.
+
+
+### Table 4
+
+```{r, echo=FALSE, warning=FALSE}
+Dataset %>%
+  filter(Class == "Tool" | Class == "Core-Tool") %>%
+  tabyl(Typology_simplified, Layer) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lccccr") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+  **Table 4** General overview of the main tool categories recovered across the studied sequence with rounded percentages in brackets. Undet. stands for Undetermined.
+
+
+## Figures
+
+
+### Figure 4
+```{r, echo=FALSE, warning=FALSE}
+cores_laminar_scatter <- Dataset_cores %>%
+  filter(Laminar_y_n == "TRUE", Core_classification_2 != "Shatter", last_rem_blank == "Bladelet" | last_rem_blank == "Blade")
+
+blanks_blade_bladelet <- Dataset %>%
+  filter(Class == "Blank" | Class == "Tool", Blank == "Bladelet" | Blank == "Blade", Preservation == "Complete")
+
+Figure_4 <- ggplot() +
+  geom_point(blanks_blade_bladelet, shape = 20, alpha = 0.1, size=2.5, mapping=aes(x = Width, y = Length, fill = Blank, color = Blank), show.legend = T) +
+  geom_point(cores_laminar_scatter, shape = 24, size = 2.5, alpha = 0.7, mapping=aes(x = width_last_rem, y = length_last_rem, fill = last_rem_blank, color = last_rem_blank), show.legend = T) +
+  facet_wrap(~Layer) +
+  labs(fill = "Removal", x = "Width (mm)", y = "Length (mm)") +
+  ggthemes::theme_clean() +
+  # theme_classic() +
+  scale_color_met_d("Lakota") +
+  scale_fill_met_d("Lakota") +
+  theme(text = element_text(size=20)) +
+  theme(axis.title.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14),
+        axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text.x = element_text(size = 16, face = "italic"))
+
+ggsave("../output/figures/Figure_4.png", plot = Figure_4, width = 8, height = 4, units = "in", dpi = 300)
+
+```
+  **Figure 4** Scatterplots showing the length and width values (in mm) of the last successful blade or bladelet removals on laminar cores (triangles) and the dimensions of all complete blades and bladelets (circles) across the studied assemblages.
+
+
+### Figure 5
+
+```{r, echo=FALSE, warning=FALSE}
+knitr::include_graphics("../output/figures/Figure_5.png")
+```
+  **Figure 5** Visualization of the results of the first and second components of the PCA conducted on laminar cores. **A** shows the scree plot and the high percentage of explained variance of the first component. **B** shows a biplot with the contribution of the different quantitative variables to the first and second components. **C** and **D** display the distribution of the studied cores in the PC1 to PC2 space, sorted according to unit (C) and core classification (D). In B, FSL stands for flaking surface length, FSL/T is the ratio between flaking surface length and thickness, FSL/W is the ratio between flaking surface length and width. The category Narrow/Burin includes narrow-sided cores and burin cores. Initial cores and core shatters were excluded from the analysis.
+
+
+### Figure 7
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+Retouched_bladelets_retouch <- Dataset %>%
+  dplyr::filter(Typology_simplified == "Retouched bladelet") %>%
+  dplyr::group_by(Layer, Retouch_position) %>%
+  dplyr::summarise(n = n()) %>%
+  dplyr::mutate(freq = paste0(round(100 * n/sum(n), 1)))
+
+Retouched_bladelets_retouch <- Retouched_bladelets_retouch %>% dplyr::rename(Retouch = Retouch_position)
+
+Retouched_bladelets_retouch$freq <- as.numeric(Retouched_bladelets_retouch$freq)
+
+Retouched_bladelets_retouch <- ddply(Retouched_bladelets_retouch, .(Layer),
+                                     transform, pos = cumsum(freq) - (0.5 * freq))
+
+Ret.bldlt.ret.fig <- Retouched_bladelets_retouch %>%
+  dplyr::mutate(Retouch = recode(Retouch, Crossed = "Direct")) %>%
+  dplyr::mutate(Layer = recode(Layer, `rsa'` = "rsa' (n = 125)", gic = "gic (n = 191)", ars = "ars (n = 12)")) %>%
+  mutate(Retouch = fct_relevel(Retouch, 
+                               "Inverse", "Direct", "Alternate")) %>%
+  ggplot() + 
+  geom_bar(aes(y = freq, x = Layer, fill = Retouch), stat="identity") +
+  theme_minimal_grid() +
+  geom_text(aes(x = Layer, y = pos, label = paste0(freq,"%")), colour="white", family="sans", fontface = "bold", size=4) +
+  theme(legend.position="top", legend.direction="horizontal", legend.title = element_blank()) +
+  labs(x="", y="%") +
+  scale_fill_manual(values=met.brewer("Pissaro")) +
+  theme(panel.grid.major = element_line(colour = "#d3d3d3"), panel.grid.minor = element_blank(),
+        panel.border = element_blank(), panel.background = element_blank()) +
+  theme(text=element_text(family="sans"),
+        axis.text.x=element_text(colour="black", size = 11),
+        axis.text.y=element_text(colour="black", size = 11)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+Ret.bldlt.ret.fig
+
+
+ret.bladelet.length <- Dataset %>%
+  filter(Blank =="Bladelet",
+           Preservation == "Complete",
+           Class == "Tool",
+         Layer != "ars") %>%
+  group_by(Layer) %>%
+  ggplot(aes(x = Layer, y = Length)) +
+  geom_boxplot(aes(fill = Layer)) +
+  stat_compare_means(comparison = comparison) +
+  stat_compare_means(label.y = 38, label.x = 1.2) +
+  geom_jitter(shape=19, position=position_jitter(width = 0.2), alpha = 0.5, size = 0.7) +
+  # geom_jitter(shape=16, position=position_jitter(width = 0.1)) +
+  theme_minimal_grid() +
+  scale_fill_manual(values=met.brewer("Navajo")) +
+  theme(text = element_text(size = 18),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 14),
+        legend.position = "none") +
+  labs(y= "Length (mm)")
+
+
+
+Figure_7 <- ggarrange(Ret.bldlt.ret.fig, ret.bladelet.length,
+          labels = c("A", "B"), font.label = list(size = 12, color = "black"))
+
+ggsave(filename="../output/figures/Figure_7.png", plot=Figure_7, device="png", height=4, width=8, units="in", dpi=300)
+
+```
+  **Figure 7.** **A** displays the percentage of bladelets modified by alternate, inverse, and direct retouching. **B** shows boxplots with jittered points of length values (in millimeters) for all complete retouched bladelets, along with the results of the Wilcoxon test, confirming significant differences between the two assemblages. Width and thickness values, along with metric data tables, are available in the Supplementary Information.
+
+
+### Figure 8
+
+```{r, echo=FALSE, warning=FALSE}
+knitr::include_graphics("../figures/Figure_8.png")
+```
+  **Figure 8.** Results of the 2D shape analysis of the complete bladelet dataset. **A** displays the shape variation across the first four PCs (SD stands for standard deviation). **B** shows the boxplots comparing the PC1 scores of the analyzed datasets from *gic* and *rsa’*, sorted according to the presence and type of retouch. **C** is the scatterplot of PC axes 1 and 2 with the mean values of each group displayed as a larger dot.
