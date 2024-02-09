@@ -162,7 +162,7 @@ Dataset_cores %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lcccc") %>%
+  kbl(align = "lccccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -231,7 +231,7 @@ Dataset_cores %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccccccr") %>%
+  kbl(align = "lcccccccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -445,7 +445,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -483,7 +483,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -557,7 +557,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 
@@ -589,7 +589,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -943,7 +943,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -979,7 +979,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1112,7 +1112,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 
@@ -1143,7 +1143,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1174,7 +1174,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1391,7 +1391,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lccccccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1414,7 +1414,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1431,7 +1431,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
@@ -1474,7 +1474,7 @@ Dataset %>%
   adorn_pct_formatting(digits = 1) %>%
   adorn_ns(position = "front") %>%
   adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
+  kbl(align = "lcccr") %>%
   row_spec(1, bold = T, hline_after = F) %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
