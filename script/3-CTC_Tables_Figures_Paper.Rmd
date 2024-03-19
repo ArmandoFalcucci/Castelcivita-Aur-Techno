@@ -172,7 +172,7 @@ Retouched_bladelets_retouch <- Retouched_bladelets_retouch %>% dplyr::rename(Ret
 
 Retouched_bladelets_retouch$freq <- as.numeric(Retouched_bladelets_retouch$freq)
 
-Retouched_bladelets_retouch <- ddply(Retouched_bladelets_retouch, .(Layer),
+Retouched_bladelets_retouch <- plyr::ddply(Retouched_bladelets_retouch, plyr::.(Layer),
                                      transform, pos = cumsum(freq) - (0.5 * freq))
 
 Ret.bldlt.ret.fig <- Retouched_bladelets_retouch %>%
@@ -220,9 +220,9 @@ ret.bladelet.length <- Dataset %>%
 
 
 Figure_7 <- ggarrange(Ret.bldlt.ret.fig, ret.bladelet.length,
-          labels = c("A", "B"), font.label = list(size = 12, color = "black"))
+          labels = c("a", "b"), font.label = list(size = 12, color = "black"))
 
-ggsave(filename="../output/figures/Figure_7.png", plot=Figure_7, device="png", height=4, width=8, units="in", dpi=300)
+ggsave(filename="../output/figures/Figure_7.tiff", plot=Figure_7, device="tiff", height=4, width=8, units="in", bg = "white", dpi=300)
 
 ```
   **Figure 7.** **A** displays the percentage of bladelets modified by alternate, inverse, and direct retouching. **B** shows boxplots with jittered points of length values (in millimeters) for all complete retouched bladelets, along with the results of the Wilcoxon test, confirming significant differences between the two assemblages. Width and thickness values, along with metric data tables, are available in the Supplementary Information.

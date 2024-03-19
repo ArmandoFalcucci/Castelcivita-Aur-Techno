@@ -282,11 +282,11 @@ PC1_2DGM_Boxplot <- Dataset_2DGM %>%
   mutate(Unit_Class_Retouch = recode(Unit_Class_Retouch, gic_Blank = "Blank", gic_Tool_AltInv = "Alt.-inv.", gic_Tool_Direct = "Direct", `rsa'_Blank` = "Blank", `rsa'_Tool_AltInv` = "Alt.-inv.", `rsa'_Tool_Direct` = "Direct")) %>%
   mutate(Unit_Class_Retouch = fct_relevel(Unit_Class_Retouch, "Blank", "Direct", "Alt.-inv.")) %>%
   ggplot(aes(x = Unit_Class_Retouch, y = PC1, fill = Layer)) +
-  geom_boxplot(alpha = 0.75) +
+  geom_boxplot(alpha = 0.85) +
   # geom_jitter(width = 0.1, alpha = 0.2) +
   labs(y= "PC1", x = "Class & Retouch") +
   theme_pubclean() +
-  scale_fill_manual(values=met.brewer("Navajo", 2)) +
+  scale_fill_manual(values=met.brewer("Isfahan1", 2)) +
   theme(text = element_text(size = 14),
         axis.title = element_text(size=14),
         axis.text = element_text(size=14),
@@ -298,12 +298,12 @@ PC1_2DGM_Boxplot <- Dataset_2DGM %>%
 PC1_2DGM_Boxplot
 
 
-ggsave(filename = "output/figures/Figure_8.png", width = 8, height = 8, units = "in",dpi=300, plot=(
+ggsave(filename = "output/figures/Figure_8.tiff", width = 8, height = 8, units = "in", bg = "white", dpi=300, plot=(
   ggdraw() +
     draw_plot(GM_bladelets_shape_variation_flipped, x = 0, y = 0.6, width = .37, height = .40) +
     draw_plot(PC1_2DGM_Boxplot, x = .4, y = 0.6, width = .6, height = .40) +
     draw_plot(PC1toPC2, x = 0, y = 0, width = 1, height = .60)  +
-    draw_plot_label(label = c("A", "B", "C"),
+    draw_plot_label(label = c("a", "b", "c"),
                     x = c(0, .4, 0), y = c(1, 1, .6), size=14)
 ))
 

@@ -130,13 +130,13 @@ PCA1.2b <- fviz_pca_ind(PCA_core,
   
 #10 Merging and saving the figures for publication ####
 
-ggsave(filename = "output/figures/Figure_5.png", width = 8, height = 10, units = "in",dpi=300, plot=(
+ggsave(filename = "output/figures/Figure_5.tiff", width = 8, height = 10, units = "in", bg = "white", dpi=300, plot=(
   ggdraw() +
     draw_plot(PCA_cores_PC_imp, x = 0, y = 0.7, width = .5, height = .30) +
     draw_plot(PCA_cores_PCs_expl, x = .5, y = 0.7, width = .5, height = .30) +
     draw_plot(PCA1.2b, x = 0, y = 0.35, width = 0.84, height = .35)  +
     draw_plot(PCA1.2a, x=0, y=0, width=1, height= .35)+
-    draw_plot_label(label = c("A", "B", "C", "D"),
+    draw_plot_label(label = c("a", "b", "c", "d"),
                     x = c(0, .5, 0,0), y = c(1, 1, .7, .35), size=14)
 ))
 
