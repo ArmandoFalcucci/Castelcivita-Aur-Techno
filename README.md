@@ -31,4 +31,4 @@ Within this repository, various folders house data (`data`), code (`script`), an
 
 Code: __MIT__ <http://opensource.org/licenses/MIT>, copyright holder: Armando Falcucci (2024).
 
-Data and intellectual work: __Creative Commons Attribution 4.0 International License__ (http://creativecommons.org/licenses/by/4.0/), copyright holder: the authors (2024).
+Data and intellectual work: __Creative Commons Attribution 4.0 International License__ <http://creativecommons.org/licenses/by/4.0/>, copyright holder: the authors (2024).
