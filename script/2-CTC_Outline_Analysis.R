@@ -298,7 +298,7 @@ PC1_2DGM_Boxplot <- Dataset_2DGM %>%
 PC1_2DGM_Boxplot
 
 
-ggsave(filename = "output/figures/Figure_8.tiff", width = 8, height = 8, units = "in", bg = "white", dpi=300, plot=(
+ggsave(filename = "output/figures/Figure_9.tiff", width = 8, height = 8, units = "in", bg = "white", dpi=300, plot=(
   ggdraw() +
     draw_plot(GM_bladelets_shape_variation_flipped, x = 0, y = 0.6, width = .37, height = .40) +
     draw_plot(PC1_2DGM_Boxplot, x = .4, y = 0.6, width = .6, height = .40) +

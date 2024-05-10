@@ -113,7 +113,7 @@ PCA1.2b <- fviz_pca_ind(PCA_core,
              ggtheme = theme(text=element_text(size=16),
                              axis.title = element_text(size=16),
                              axis.text = element_text(size=14)),
-             legend.title=element_text("Unit")) +
+             legend.title=element_text("Layer")) +
   # scale_fill_manual(values=cbPalette) +
   # scale_colour_manual(values=cbPalette) +
   scale_fill_manual(values=met.brewer("Navajo", 2)) +
@@ -130,7 +130,7 @@ PCA1.2b <- fviz_pca_ind(PCA_core,
   
 #10 Merging and saving the figures for publication ####
 
-ggsave(filename = "output/figures/Figure_5.tiff", width = 8, height = 10, units = "in", bg = "white", dpi=300, plot=(
+ggsave(filename = "output/figures/Figure_6.tiff", width = 8, height = 10, units = "in", bg = "white", dpi=300, plot=(
   ggdraw() +
     draw_plot(PCA_cores_PC_imp, x = 0, y = 0.7, width = .5, height = .30) +
     draw_plot(PCA_cores_PCs_expl, x = .5, y = 0.7, width = .5, height = .30) +

@@ -121,7 +121,7 @@ Dataset %>%
 ## Figures
 
 
-### Figure 4
+### Figure 5
 ```{r, echo=FALSE, warning=FALSE}
 cores_laminar_scatter <- Dataset_cores %>%
   filter(Laminar_y_n == "TRUE", Core_classification_2 != "Shatter", last_rem_blank == "Bladelet" | last_rem_blank == "Blade")
@@ -129,7 +129,7 @@ cores_laminar_scatter <- Dataset_cores %>%
 blanks_blade_bladelet <- Dataset %>%
   filter(Class == "Blank" | Class == "Tool", Blank == "Bladelet" | Blank == "Blade", Preservation == "Complete")
 
-Figure_4 <- ggplot() +
+Figure_5 <- ggplot() +
   geom_point(blanks_blade_bladelet, shape = 20, alpha = 0.1, size=2.5, mapping=aes(x = Width, y = Length, fill = Blank, color = Blank), show.legend = T) +
   geom_point(cores_laminar_scatter, shape = 24, size = 2.5, alpha = 0.7, mapping=aes(x = width_last_rem, y = length_last_rem, fill = last_rem_blank, color = last_rem_blank), show.legend = T) +
   facet_wrap(~Layer) +
@@ -145,21 +145,21 @@ Figure_4 <- ggplot() +
         axis.text.y = element_text(size = 12),
         strip.text.x = element_text(size = 16, face = "italic"))
 
-ggsave("../output/figures/Figure_4.png", plot = Figure_4, width = 8, height = 4, units = "in", dpi = 300)
+ggsave("../output/figures/Figure_5.tiff", plot = Figure_5, width = 8, height = 4, units = "in", dpi = 300)
 
 ```
-  **Figure 4** Scatterplots showing the length and width values (in mm) of the last successful blade or bladelet removals on laminar cores (triangles) and the dimensions of all complete blades and bladelets (circles) across the studied assemblages.
+  **Figure 5.** Scatterplots showing the length and width values (in mm) of the last successful blade or bladelet removals on laminar cores (triangles) and the dimensions of all complete blades and bladelets (circles) across the studied assemblages.
 
 
-### Figure 5
+### Figure 6
 
 ```{r, echo=FALSE, warning=FALSE}
-knitr::include_graphics("../output/figures/Figure_5.png")
+knitr::include_graphics("../output/figures/Figure_6.tif")
 ```
-  **Figure 5** Visualization of the results of the first and second components of the PCA conducted on laminar cores. **A** shows the scree plot and the high percentage of explained variance of the first component. **B** shows a biplot with the contribution of the different quantitative variables to the first and second components. **C** and **D** display the distribution of the studied cores in the PC1 to PC2 space, sorted according to unit (C) and core classification (D). In B, FSL stands for flaking surface length, FSL/T is the ratio between flaking surface length and thickness, FSL/W is the ratio between flaking surface length and width. The category Narrow/Burin includes narrow-sided cores and burin cores. Initial cores and core shatters were excluded from the analysis.
+  **Figure 6.** Visualization of the results of the first and second components of the PCA conducted on laminar cores. **A** shows the scree plot and the high percentage of explained variance of the first component. **B** shows a biplot with the contribution of the different quantitative variables to the first and second components. **C** and **D** display the distribution of the studied cores in the PC1 to PC2 space, sorted according to unit (C) and core classification (D). In B, FSL stands for flaking surface length, FSL/T is the ratio between flaking surface length and thickness, FSL/W is the ratio between flaking surface length and width. The category Narrow/Burin includes narrow-sided cores and burin cores. Initial cores and core shatters were excluded from the analysis.
 
 
-### Figure 7
+### Figure 8
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 Retouched_bladelets_retouch <- Dataset %>%
@@ -219,18 +219,18 @@ ret.bladelet.length <- Dataset %>%
 
 
 
-Figure_7 <- ggarrange(Ret.bldlt.ret.fig, ret.bladelet.length,
+Figure_8 <- ggarrange(Ret.bldlt.ret.fig, ret.bladelet.length,
           labels = c("a", "b"), font.label = list(size = 12, color = "black"))
 
-ggsave(filename="../output/figures/Figure_7.tiff", plot=Figure_7, device="tiff", height=4, width=8, units="in", bg = "white", dpi=300)
+ggsave(filename="../output/figures/Figure_8.tiff", plot=Figure_8, device="tiff", height=4, width=8, units="in", bg = "white", dpi=300)
 
 ```
-  **Figure 7.** **A** displays the percentage of bladelets modified by alternate, inverse, and direct retouching. **B** shows boxplots with jittered points of length values (in millimeters) for all complete retouched bladelets, along with the results of the Wilcoxon test, confirming significant differences between the two assemblages. Width and thickness values, along with metric data tables, are available in the Supplementary Information.
+  **Figure 8.** **A** displays the percentage of bladelets modified by alternate, inverse, and direct retouching. **B** shows boxplots with jittered points of length values (in millimeters) for all complete retouched bladelets, along with the results of the Wilcoxon test, confirming significant differences between the two assemblages. Width and thickness values, along with metric data tables, are available in the Supplementary Information.
 
 
-### Figure 8
+### Figure 9
 
 ```{r, echo=FALSE, warning=FALSE}
-knitr::include_graphics("../figures/Figure_8.png")
+knitr::include_graphics("../output/figures/Figure_9.tiff")
 ```
-  **Figure 8.** Results of the 2D shape analysis of the complete bladelet dataset. **A** displays the shape variation across the first four PCs (SD stands for standard deviation). **B** shows the boxplots comparing the PC1 scores of the analyzed datasets from *gic* and *rsa’*, sorted according to the presence and type of retouch. **C** is the scatterplot of PC axes 1 and 2 with the mean values of each group displayed as a larger dot.
+  **Figure 9.** Results of the 2D shape analysis of the complete bladelet dataset. **A** displays the shape variation across the first four PCs (SD stands for standard deviation). **B** shows the boxplots comparing the PC1 scores of the analyzed datasets from *gic* and *rsa’*, sorted according to the presence and type of retouch. **C** is the scatterplot of PC axes 1 and 2 with the mean values of each group displayed as a larger dot.
