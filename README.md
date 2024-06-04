@@ -11,9 +11,9 @@ The content available at the above provided URL will reproduce the results as do
 
 [![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3255--1005-green.svg)](https://orcid.org/0000-0002-3255-1005) Armando Falcucci (<armando.falcucci@uni-tuebingen.de>) 
 
-### Submitted paper:
+### Published paper:
 
-Armando Falcucci, Simona Arrighi, Vincenzo Spagnolo, Matteo Rossini, Owen Higgins, Brunella Muttillo, Ivan Martini, Jacopo Crezzini, Francesco Boschin, Annamaria Ronchitelli, Adriana Moroni. A pre-Campanian Ignimbrite techno-cultural shift in the Aurignacian sequence of Grotta di Castelcivita, southern Italy. _in preparation_ (2024).
+Armando Falcucci, Simona Arrighi, Vincenzo Spagnolo, Matteo Rossini, Owen Higgins, Brunella Muttillo, Ivan Martini, Jacopo Crezzini, Francesco Boschin, Annamaria Ronchitelli, Adriana Moroni. A pre-Campanian Ignimbrite techno-cultural shift in the Aurignacian sequence of Grotta di Castelcivita, southern Italy. _Scientific Reports_ 14:12783 (2024). https://doi.org/10.1038/s41598-024-59896-6
 
 ### Abstract:
 
